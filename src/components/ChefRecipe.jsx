@@ -2,9 +2,9 @@ import React from 'react';
 
 const ChefRecipe = () => {
     return (
-        <div>
-            <h2>Chef Recipe Page</h2>
-        </div>
+      <div>
+        <h2>Chef Recipes Details</h2>
+      </div>
     );
 };
 
