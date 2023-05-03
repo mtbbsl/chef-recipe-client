@@ -20,8 +20,26 @@ const Home = () => {
             </div>
           </div>
         </section>
+
         <section>
-            
+          <div className="card card-side bg-base-100 shadow-xl">
+            <figure>
+              <img
+                src="/chef.png"
+                alt=""
+              />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">Chef Name: Ranvir Kumer</h2>
+              <p>Year of Experience: 7</p>
+              <p>Numbers of recipes: 10</p>
+              <p>Likes: 5010</p>
+              <div className="card-actions justify-end">
+                <button className="btn btn-primary">View Recipes</button>
+              </div>
+            </div>
+          </div>
+          
         </section>
       </div>
     );
