@@ -1,25 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
 
 const Login = () => {
   const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+  const [ error, setError ] = useState('');
 
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
 
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        // console.log(loggedUser);
         form.reset();
+        setError('');
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error.message);
+        setError(error.message);
       });
   };
 
@@ -27,10 +30,10 @@ const Login = () => {
     signInWithGoogle()
     .then(result => {
       const loggedUser = result.user;
-      console.log(loggedUser);
+      // console.log(loggedUser);
     })
     .catch(error => {
-      console.log(error);
+      console.error(error.message);
     })
   }
 
@@ -38,10 +41,10 @@ const Login = () => {
     signInWithGithub()
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        // console.log(loggedUser);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error.message);
       });
   }
 
@@ -90,6 +93,7 @@ const Login = () => {
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
+          <p className="text-yellow-300 text-center px-4">{error}</p>
           <Link to="/register" className="text-center mb-4">
             <button className="btn btn-link text-base-content no-underline">
               New to Indian Chef? Please Register

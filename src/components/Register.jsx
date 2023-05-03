@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
 
@@ -6,24 +6,37 @@ const Register = () => {
 
     const { user, createUser } = useContext(AuthContext);
     // console.log(user, createUser);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
   const handleRegister = (event) => {
     event.preventDefault();
+    setSuccess('');
+    setError('');
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
-    console.log(name, email, photo, password);
+    // console.log(name, email, photo, password);
+
+    // validate
+    if(password.length < 6){
+      setError('Please add at least 6 characters in your password.');
+      return;
+    }
 
     createUser(email, password)
     .then(result => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        // console.log(loggedUser);
         form.reset();
+        setError('');
+        setSuccess('User created successfully.');
     })
     .catch(error => {
-        console.log(error);
+        console.error(error.message);
+        setError(error.message);
     })
   };
 
@@ -90,7 +103,9 @@ const Register = () => {
               <button className="btn btn-primary">Register</button>
             </div>
           </form>
-          <Link to="/login">
+          <p className="text-yellow-300 text-center px-4">{error}</p>
+          <p className="text-green-500 text-center px-4">{success}</p>
+          <Link to="/login" className="text-center mb-4">
             <button className="btn btn-link text-base-content no-underline">
               Already have an account? Please Login
             </button>
