@@ -3,8 +3,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
 
 const Login = () => {
-  const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
-  const [ error, setError ] = useState('');
+  const [show, setShow] = useState(false);
+
+  const { signIn, signInWithGoogle, signInWithGithub } =
+    useContext(AuthContext);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const location = useLocation();
@@ -22,8 +25,8 @@ const Login = () => {
         const loggedUser = result.user;
         // console.log(loggedUser);
         form.reset();
-        setError('');
-        navigate(from, {replace: true});
+        setError("");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error.message);
@@ -33,14 +36,14 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
-    .then(result => {
-      const loggedUser = result.user;
-      // console.log(loggedUser);
-    })
-    .catch(error => {
-      console.error(error.message);
-    })
-  }
+      .then((result) => {
+        const loggedUser = result.user;
+        // console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
 
   const handleGithubSignIn = () => {
     signInWithGithub()
@@ -51,7 +54,7 @@ const Login = () => {
       .catch((error) => {
         console.error(error.message);
       });
-  }
+  };
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -82,31 +85,39 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                type={show ? "text" : "password"}
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
                 required
               />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
+              <p onClick={() => setShow(!show)}>
+                <small>
+                  {show ? (
+                    <span>Hide Password</span>
+                  ) : (
+                    <span>Show Password</span>
+                  )}
+                </small>
+              </p>
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
           <p className="text-yellow-300 text-center px-4">{error}</p>
-          <Link to="/register" className="text-center mb-4">
+          <Link to="/register" className="text-center">
             <button className="btn btn-link text-base-content no-underline">
               New to Indian Chef? Please Register
             </button>
           </Link>
           <div className="flex justify-center gap-4 mb-4">
-            <button onClick={handleGoogleSignIn} className="btn btn-primary">Google Sign In</button>
-            <button onClick={handleGithubSignIn} className="btn btn-primary">Github Sign In</button>
+            <button onClick={handleGoogleSignIn} className="btn btn-primary">
+              Google Sign In
+            </button>
+            <button onClick={handleGithubSignIn} className="btn btn-primary">
+              Github Sign In
+            </button>
           </div>
         </div>
       </div>
