@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
 
 const Header = () => {
-
     const { user, logOut } = useContext(AuthContext);
-    // console.log(user);
+    console.log(user);
 
     const handleLogOut = () => {
         logOut()
@@ -22,13 +21,13 @@ const Header = () => {
         <Link to="/" className="btn btn-ghost normal-case text-xl">Home</Link>
         <Link to="/blog" className="btn btn-ghost normal-case text-xl">Blog</Link>
         <Link to="/chefRecipe" className="btn btn-ghost normal-case text-xl">Chef Recipe</Link>
-        <Link to="/login" className="btn btn-ghost normal-case text-xl">Login</Link>
-        <img className="w-10 rounded-full" src="/image.jpg" />
         {
             user ? <>
             <span>{user.email}</span>
-            <button onClick={handleLogOut} className="btn btn-xs">Sign Out</button>
-            </> : <Link to="/login">Login</Link>
+            <span>{user.displayName}</span>
+            <img src={user.photoURL} alt="" />
+            <button onClick={handleLogOut} className="btn btn-ghost normal-case text-xl">Sign Out</button>
+            </> : <Link to="/login" className="btn btn-ghost normal-case text-xl">Login</Link>
         }
       </div>
     </div>
