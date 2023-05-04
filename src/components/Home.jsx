@@ -10,7 +10,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/chefs")
+    fetch("https://chef-recipe-server-mtbbsl.vercel.app/chefs")
       .then((res) => res.json())
       .then((data) => setChefsData(data))
       .catch((error) => console.error(error))
