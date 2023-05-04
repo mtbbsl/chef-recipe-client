@@ -26,8 +26,8 @@ const Home = () => {
       <section>
         <div className="hero min-h-screen bg-base-200">
           <div className="hero-content flex-col lg:flex-row">
-            <img src="/chef.png" className="max-w-sm rounded-lg shadow-2xl" />
-            <div>
+            <img src="/chef.png" className="max-w-m rounded-lg shadow-2xl" />
+            <div className="text-center lg:text-left">
               <h1 className="text-5xl font-bold">Indian Chef</h1>
               <p className="py-6">
                 Six Famous Indian Chefs That Will Help You Unlock Your Culinary
@@ -71,15 +71,15 @@ const Home = () => {
             <div className="flex flex-col justify-center items-center">
               <h1 className="text-5xl font-bold">Subscribe Now</h1>
               <p className="py-6">
-                As a subscriber, you'll receive regular updates on [Website
-                Name]'s latest news, articles, and promotions. We'll also be
-                sending you exclusive content that you won't find anywhere else.
+                As a subscriber, you ll receive regular updates on Website
+                Name s latest news, articles, and promotions. We ll also be
+                sending you exclusive content that you wont find anywhere else.
               </p>
               <p className="py-2">
                 We take your privacy seriously, so you can rest assured that we
-                won't share your personal information with anyone. If you ever
+                won t share your personal information with anyone. If you ever
                 decide that you no longer want to receive emails from us, you
-                can unsubscribe at any time by clicking the "unsubscribe" link
+                can unsubscribe at any time by clicking the unsubscribe link
                 at the bottom of our
               </p>
               <div className="form-control">

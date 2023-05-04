@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
+import ActiveLink from "./ActiveLink";
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -12,21 +13,21 @@ const Header = () => {
     };
 
   return (
-    <div className="navbar bg-neutral text-neutral-content">
+    <div className="navbar bg-neutral text-neutral-content px-6 flex flex-col lg:flex-row">
       <div className="flex-1">
         <a className="btn btn-ghost normal-case text-xl">Indian Chef</a>
       </div>
-      <div className="flex-none gap-2">
-        <Link to="/" className="btn btn-ghost normal-case text-xl">Home</Link>
-        <Link to="/blog" className="btn btn-ghost normal-case text-xl">Blog</Link>
+      <div className="flex-none gap-4">
+        <ActiveLink to="/" className="btn btn-ghost normal-case text-xl">Home</ActiveLink>
+        <ActiveLink to="/blog" className="btn btn-ghost normal-case text-xl">Blog</ActiveLink>
         
         {
             user ? <>
             <span>{user.email}</span>
             <span>{user.displayName}</span>
-            <img src={user.photoURL} alt="" />
+            <img src={user.photoURL} alt="" className="w-12 rounded-full" />
             <button onClick={handleLogOut} className="btn btn-ghost normal-case text-xl">Sign Out</button>
-            </> : <Link to="/login" className="btn btn-ghost normal-case text-xl">Login</Link>
+            </> : <ActiveLink to="/login" className="btn btn-ghost normal-case text-xl">Login</ActiveLink>
         }
       </div>
     </div>
