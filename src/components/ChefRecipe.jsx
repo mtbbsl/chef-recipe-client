@@ -8,8 +8,6 @@ const ChefRecipe = () => {
 
   const [chefRecipe, setChefRecipe] = useState({});
 
-  console.log(chefRecipe);
-
   useEffect(() => {
     fetch(`https://chef-recipe-server-mtbbsl.vercel.app/chefs/${id}`)
       .then((res) => res.json())
@@ -91,7 +89,7 @@ const ChefRecipe = () => {
               <div className="card-actions justify-end">
                 <button
                   onClick={() => handleFavoriteClick(recipe.id)}
-                  className="btn btn-primary"
+                  className="btn btn-accent"
                   disabled={recipe.favoriteClicked}
                 >
                   {recipe.favoriteClicked ? "Favorited" : "Favorite"}
