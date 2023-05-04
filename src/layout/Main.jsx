@@ -6,12 +6,20 @@ import Footer from '../components/Footer';
 const Main = () => {
     const navigation = useNavigation();
     return (
+      <div>
+        <Header></Header>
         <div>
-            <Header></Header>
-            <div>{navigation.state === 'loading' && 'Loading' }</div>
-            <Outlet></Outlet>
-            <Footer></Footer>
+          {navigation.state === "loading" && (
+            <progress
+              className="progress progress-warning w-56"
+              value="100"
+              max="100"
+            ></progress>
+          )}
         </div>
+        <Outlet></Outlet>
+        <Footer></Footer>
+      </div>
     );
 };
 

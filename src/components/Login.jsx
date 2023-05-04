@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
+import { updateProfile } from "firebase/auth";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -56,6 +57,7 @@ const Login = () => {
       });
   };
 
+  
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
