@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProviders";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
@@ -11,7 +12,7 @@ const Home = () => {
     fetch("http://localhost:5000/chefs")
       .then((res) => res.json())
       .then((data) => setChefsData(data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
   }, []);
 
   return (
@@ -38,7 +39,7 @@ const Home = () => {
           {chefsData.map((chef) => (
             <div key={chef.id} className="card card-side bg-neutral shadow-xl">
               <figure>
-                <img src={chef.chef_picture_url} alt="" className="" />
+                <img src={chef?.chef_picture_url} alt="" className="" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">Chef Name: {chef.chef_name}</h2>
@@ -46,7 +47,11 @@ const Home = () => {
                 <p>No. of Recipes: {chef.number_of_recipes}</p>
                 <p>Likes: {chef.likes}</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-active btn-accent">View Recipes</button>
+                  <Link to={`/chef/${chef.id}/recipes`}>
+                    <button className="btn btn-active btn-accent">
+                      View Recipes
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

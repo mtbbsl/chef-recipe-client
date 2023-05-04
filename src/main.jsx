@@ -29,11 +29,11 @@ const router = createBrowserRouter([
         element: <Register></Register>
       },
       {
-        path: 'blog',
+        path: '/blog',
         element: <Blog></Blog>
       },
       {
-        path: 'chefRecipe',
+        path: '/chefRecipe/:id',
         element: <PrivateRoute><ChefRecipe></ChefRecipe></PrivateRoute>
       }
     ]
