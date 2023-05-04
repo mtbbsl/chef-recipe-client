@@ -8,6 +8,8 @@ const ChefRecipe = () => {
 
   const [chefRecipe, setChefRecipe] = useState({});
 
+  console.log(chefRecipe);
+
   useEffect(() => {
     fetch(`https://chef-recipe-server-mtbbsl.vercel.app/chefs/${id}`)
       .then((res) => res.json())
@@ -41,21 +43,65 @@ const ChefRecipe = () => {
 
   return (
     <div>
-      <h1>{chefRecipe.chef_name}</h1>
-      <div>
+      {/* banner section */}
+      <section className="p-16">
+        <div className="hero min-h-screen bg-base-200">
+          <div className="hero-content flex-col lg:flex-row">
+            <img
+              src={chefRecipe.chef_picture_url}
+              className="max-w-sm rounded-lg shadow-2xl"
+            />
+            <div>
+              <h1 className="text-5xl font-bold">{chefRecipe.chef_name}</h1>
+              <p className="py-4">{chefRecipe.chef_bio}</p>
+              <p className="py-2">
+                <span className="font-bold">Number of recipes:</span>{" "}
+                {chefRecipe.number_of_recipes}
+              </p>
+              <p className="py-2">
+                <span className="font-bold">Years of experience:</span>{" "}
+                {chefRecipe.years_of_experience}
+              </p>
+              <p className="py-2">
+                <span className="font-bold">Likes:</span> {chefRecipe.likes}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* card section */}
+      <section className="grid lg:grid-cols-3 px-16 pb-16">
         {chefRecipe?.recipes?.map((recipe) => (
-          <div key={recipe.id}>
-            {recipe.recipe_name}
-            <button
-              onClick={() => handleFavoriteClick(recipe.id)}
-              className="btn btn-accent m-4"
-              disabled={recipe.favoriteClicked}
-            >
-              {recipe.favoriteClicked ? "Favorited" : "Favorite"}
-            </button>
+          <div key={recipe.id} className="card w-96 bg-neutral shadow-xl">
+            <div className="card-body">
+              <h2 className="card-title">{recipe.recipe_name}</h2>
+              <p>
+                <span className="font-bold">Ingredients:</span>
+                {recipe.ingredients}
+              </p>
+              <p>
+                <span className="font-bold">Cooking Method:</span>
+                {recipe.cooking_method}
+              </p>
+              <p>
+                <span className="font-bold">Ratings:</span>
+                {recipe.ratings}
+              </p>
+              <div className="card-actions justify-end">
+                <button
+                  onClick={() => handleFavoriteClick(recipe.id)}
+                  className="btn btn-primary"
+                  disabled={recipe.favoriteClicked}
+                >
+                  {recipe.favoriteClicked ? "Favorited" : "Favorite"}
+                </button>
+              </div>
+            </div>
           </div>
         ))}
-      </div>
+      </section>
+
       <ToastContainer />
     </div>
   );
