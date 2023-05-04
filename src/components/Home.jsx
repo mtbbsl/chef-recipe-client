@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProviders";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
   // console.log(user);
 
   const [chefsData, setChefsData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/chefs")
@@ -14,6 +15,10 @@ const Home = () => {
       .then((data) => setChefsData(data))
       .catch((error) => console.error(error))
   }, []);
+
+  const handleViewRecipe = (id) => {
+    navigate(`/chefRecipe/${id}`);
+  }
 
   return (
     <div>
@@ -47,11 +52,12 @@ const Home = () => {
                 <p>No. of Recipes: {chef.number_of_recipes}</p>
                 <p>Likes: {chef.likes}</p>
                 <div className="card-actions justify-end">
-                  <Link to={`/chef/${chef.id}/recipes`}>
-                    <button className="btn btn-active btn-accent">
-                      View Recipes
-                    </button>
-                  </Link>
+                  <button
+                    onClick={() => handleViewRecipe(chef.id)}
+                    className="btn btn-active btn-accent"
+                  >
+                    View Recipes
+                  </button>
                 </div>
               </div>
             </div>
