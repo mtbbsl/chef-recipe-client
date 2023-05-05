@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
-import { updateProfile } from "firebase/auth";
 
 const Login = () => {
   const [show, setShow] = useState(false);

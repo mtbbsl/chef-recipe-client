@@ -9,7 +9,7 @@ import Loadable from './components/Loadable';
 const Home = Loadable(lazy(() => import("./components/Home")));
 const Login = Loadable(lazy(() => import("./components/Login")));
 const Register = Loadable(lazy(() => import("./components/Register")));
-const Blog = Loadable(lazy(() => import("./components/Register")));
+const Blog = Loadable(lazy(() => import("./components/Blog")));
 const ChefRecipe = Loadable(lazy(() => import("./components/ChefRecipe")));
 const ErrorPage = Loadable(lazy(() => import("./components/ErrorPage")));
 import AuthProviders from './providers/AuthProviders';

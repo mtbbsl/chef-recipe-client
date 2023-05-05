@@ -23,15 +23,15 @@ const Blog = () => {
             An uncontrolled component is a component where the value is handled
             by the DOM. In other words, the value of an uncontrolled component
             is read directly from the DOM rather than from state. Uncontrolled
-            components are commonly used for form inputs that don't need to be
-            validated or don't require any special handling.
+            components are commonly used for form inputs that dont need to be
+            validated or dont require any special handling.
           </p>
           <p className="mb-2">
             In summary, controlled components use state to manage the value of
             the component, while uncontrolled components rely on the DOM to
             manage the value. Controlled components provide a more predictable
             behavior, while uncontrolled components are easier to use in simple
-            cases. It's important to choose the right approach based on the
+            cases. Its important to choose the right approach based on the
             specific requirements of your component.
           </p>
         </section>
