@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from './layout/Main';
-// import Home from './components/Home';
 import Loadable from './components/Loadable';
 const Home = Loadable(lazy(() => import("./components/Home")));
 const Login = Loadable(lazy(() => import("./components/Login")));
