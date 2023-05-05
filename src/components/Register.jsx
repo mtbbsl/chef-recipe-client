@@ -4,7 +4,7 @@ import { AuthContext } from "../providers/AuthProviders";
 
 const Register = () => {
 
-    const {user, createUser} = useContext(AuthContext);
+    const { user, createUser, updateUserProfile } = useContext(AuthContext);
     // console.log(user, createUser);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -18,13 +18,23 @@ const Register = () => {
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
-    // console.log(name, email, photo, password);
+    console.log(name, email, photo, password);
 
     // validate
     if(password.length < 6){
       setError('Please add at least 6 characters in your password.');
       return;
     }
+
+    updateUserProfile(name, photo)
+    .then(result => {
+      const createdUser = result.user;
+      console.log(createUser);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
 
     createUser(email, password)
     .then(result => {
@@ -117,3 +127,4 @@ const Register = () => {
 };
 
 export default Register;
+

@@ -1,16 +1,20 @@
 import React from 'react'
+import { lazy } from "react";
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from './layout/Main';
-import Home from './components/Home';
-import Login from './components/Login';
-import Register from './components/Register';
-import Blog from './components/Blog';
-import ChefRecipe from './components/ChefRecipe';
+// import Home from './components/Home';
+import Loadable from './components/Loadable';
+const Home = Loadable(lazy(() => import("./components/Home")));
+const Login = Loadable(lazy(() => import("./components/Login")));
+const Register = Loadable(lazy(() => import("./components/Register")));
+const Blog = Loadable(lazy(() => import("./components/Register")));
+const ChefRecipe = Loadable(lazy(() => import("./components/ChefRecipe")));
+const ErrorPage = Loadable(lazy(() => import("./components/ErrorPage")));
 import AuthProviders from './providers/AuthProviders';
 import PrivateRoute from './routes/PrivateRoute';
-import ErrorPage from './components/ErrorPage';
+
 
 const router = createBrowserRouter([
   {
