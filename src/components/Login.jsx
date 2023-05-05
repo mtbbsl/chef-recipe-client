@@ -103,20 +103,20 @@ const Login = () => {
               </p>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn btn-accent">Login</button>
             </div>
           </form>
           <p className="text-yellow-300 text-center px-4">{error}</p>
-          <Link to="/register" className="text-center">
-            <button className="btn btn-link text-base-content no-underline">
-              New to Indian Chef? Please Register
+          <Link to="/register" className="text-center py-12">
+            <button className="btn btn-accent">
+              Not Account? Please Register
             </button>
           </Link>
           <div className="flex justify-center gap-4 mb-4">
-            <button onClick={handleGoogleSignIn} className="btn btn-primary">
+            <button onClick={handleGoogleSignIn} className="btn btn-accent">
               Google Sign In
             </button>
-            <button onClick={handleGithubSignIn} className="btn btn-primary">
+            <button onClick={handleGithubSignIn} className="btn btn-accent">
               Github Sign In
             </button>
           </div>

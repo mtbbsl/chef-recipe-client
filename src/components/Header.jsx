@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <div className="navbar bg-neutral text-neutral-content px-6 flex flex-col lg:flex-row">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">Indian Chef</a>
+        <a className="btn btn-ghost normal-case text-xl">Indian Chef & Recipes</a>
       </div>
       <div className="flex-none gap-4">
         <ActiveLink to="/" className="btn btn-ghost normal-case text-xl">
