@@ -4,7 +4,7 @@ import ActiveLink from "./ActiveLink";
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
 
     const handleLogOut = () => {
         logOut()
@@ -26,14 +26,12 @@ const Header = () => {
         </ActiveLink>
 
         {user ? (
-          <>
-            <span>{user.email}</span>
-            <span>{user.displayName}</span>
+          <div className="flex items-center">
             <img
               src={user.photoURL}
-              alt=""
-              className="w-12 rounded-full"
-              data-tip={user.displayName}
+              alt={user.displayName}
+              title={user.displayName}
+              className="w-12 rounded-full cursor-pointer"
             />
             <button
               onClick={handleLogOut}
@@ -41,7 +39,7 @@ const Header = () => {
             >
               Sign Out
             </button>
-          </>
+          </div>
         ) : (
           <ActiveLink to="/login" className="btn btn-ghost normal-case text-xl">
             Login
